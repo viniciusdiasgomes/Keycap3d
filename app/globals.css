@@ -1,26 +1,65 @@
+/* IMPORTAR Roboto Flex COMPLETA (primeira linha obrigatória!) */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght,slnt,wdth@8..144,100..1000,-10..0,50..200&display=swap");
+
+/* Tailwind */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ======================= */
+/*   Fontes Personalizadas  */
+/* ======================= */
+
+.font-black-slanted {
+  font-family: "Roboto Flex", sans-serif;
+  font-variation-settings:
+    "wdth" 100,
+    "slnt" -10,
+    "opsz" 144,
+    "wght" 1000;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.font-bold-slanted {
+  font-family: "Roboto Flex", sans-serif;
+  font-variation-settings:
+    "wdth" 74,
+    "slnt" -10,
+    "opsz" 100,
+    "wght" 600;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ======================= */
+/*   Animações & Utilidades */
+/* ======================= */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-marquee {
+  animation-name: marquee;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+.blue-gradient-bg {
+  background: linear-gradient(to bottom, #000000, #0f172a, #062f4a, #7fa0b9);
+}
+
+.hero-heading {
+  text-shadow:
+    4px 4px 0 rgba(0, 0, 0, 0.25),
+    8px 8px 0 rgba(0, 0, 0, 0.20),
+    12px 12px 0 rgba(0, 0, 0, 0.15),
+    16px 16px 0 rgba(0, 0, 0, 0.10);
 }

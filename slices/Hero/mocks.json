@@ -1,0 +1,36 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nulla amet dolor qui. Consequat velit culpa anim esse id nisi mollit pariatur amet id ea cillum irure do. Reprehenderit reprehenderit proident anim eu ex exercitation ut sint mollit magna dolore reprehenderit minim anim."
+						}
+					}
+				]
+			},
+			"body": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ea sunt enim dolor veniam velit cupidatat et proident. Irure magna labore elit aliquip proident."
+						}
+					}
+				]
+			},
+			"buy_button_text": {
+				"__TYPE__": "FieldContent",
+				"value": "build",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
