@@ -17,6 +17,8 @@ export function Scene(){
     })
 
 
+    const scalingFactor = window.innerWidth <= 500? .5 : 1;
+
     return(
         <group>
 
@@ -25,6 +27,8 @@ export function Scene(){
         position={[0 , 0 , 4]}
         fov={50}
         /> 
+
+<group scale={scalingFactor}>
 
 
             <Keyboard 
@@ -45,7 +49,7 @@ export function Scene(){
                 <Keycap position={[2,0,1]} rotation={[0, 0, 3]} texture={7} />
                 
             </group>
-
+</group>
             <Environment 
             files={["/hdr/blue-studio.hdr"]}
             environmentIntensity={0.05}

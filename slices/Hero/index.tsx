@@ -28,7 +28,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
       data-slice-variation={slice.variation}
       className=" blue-gradient-bg relative h-dvh text-white drop-shadow-black/30  text-shadow-lg"
     >
-      <div className="hero-scene sticky pointer-events-none top-0 h-dvh w-full">
+      <div className="hero-scene absolute inset-0 pointer-events-none">
 
         <Canvas shadows="soft">
           <Scene/>
