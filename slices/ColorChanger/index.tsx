@@ -67,13 +67,15 @@ const ColorChanger: FC<ColorChangerProps> = ({ slice }) => {
     const [backgroundText, setBackgroundText] = useState<string>(
   KEYCAP_TEXTURES[0].name
 );
-    const [isAnimation, setIsAnimation] = useState<boolean>(false);
+    const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
 
     function handleTextureSelect(texture: KeycapTexture){
 
-        if(texture.id === selectedTextureId || isAnimation) return
+        if(texture.id === selectedTextureId || isAnimating) return
 
+      
+      setIsAnimating(true);
       setSelectedTextureId(texture.id);
       setBackgroundText(KEYCAP_TEXTURES.find((t)=> t.id === texture.id)?.name || "",)
 
@@ -82,7 +84,7 @@ const ColorChanger: FC<ColorChangerProps> = ({ slice }) => {
 
 
     const handleAnimationComplete = useCallback(()=>{
-      setIsAnimation(false)
+      setIsAnimating(false)
     },[])
 
 
@@ -135,8 +137,9 @@ const ColorChanger: FC<ColorChangerProps> = ({ slice }) => {
     {KEYCAP_TEXTURES.map((texture)=>(
       <li key={texture.id}>
         <button onClick={()=>handleTextureSelect(texture)}
+        disabled={isAnimating}
         className={clsx("flex aspect-square flex-col items-center justify-center rounded-lg border-2 p-4 hover:scale-105 motion-safe:transition-all motion-safe:duration-300", 
-        selectedTextureId === texture.id ? "border-[#81BFED] bg-[#81BFED]/ 20" : "cursor-pointer border-gray-300 hover:border-gray-500", isAnimation && "ucror-not-allowed opacity-50")}>
+        selectedTextureId === texture.id ? "border-[#81BFED] bg-[#81BFED]/ 20" : "cursor-pointer border-gray-300 hover:border-gray-500", isAnimating && "ucror-not-allowed opacity-50")}>
             <div className="mb-3 overflow-hidden rounded border-2 border-black bg-gray-100 ">
               <Image src={texture.path} alt={texture.name} width={400} height={255}
                className="h-full w-full object-cover"/>
