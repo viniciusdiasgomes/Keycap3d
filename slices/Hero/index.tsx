@@ -8,7 +8,7 @@ import { Canvas } from "@react-three/fiber";
 import { Scene } from "./Scene";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
-
+import gsap from "gsap";
 
 gsap.registerPlugin(useGSAP, SplitText)
 
@@ -22,7 +22,7 @@ const Hero: FC<HeroProps> = ({ slice }) => {
      mm.add("(prefers-reduced-motion: no-preference)", () => {
 
         const split = SplitText.create(".hero-heading", {
-          type:"chars,liines",
+          type:"chars,lines",
           mask:"lines",
           linesClass:"line++"
         })
@@ -58,13 +58,15 @@ const Hero: FC<HeroProps> = ({ slice }) => {
     .join(" ")
     .trim();
 
+
+
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="hero blue-gradient-bg relative h-dvh text-white drop-shadow-black/30  text-shadow-lg"
+      className="hero blue-gradient-bg relative h-dvh text-white drop-shadow-black/30  text-shadow-lg motion-safe:h-[300vh]"
     >
-      <div className="hero-scene absolute inset-0 pointer-events-none">
+      <div className="hero-scene pointer-events-none sticky top-0 h-dvh w-full">
 
         <Canvas shadows="soft">
           <Scene/>

@@ -1,0 +1,52 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Officia pariatur reprehenderit officia et ex voluptate id eiusmod laborum laboris nulla dolore excepteur est. Aute quis voluptate dolore eiusmod esse minim quis Lorem cillum et culpa dolore excepteur sunt."
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Evening"
+						}
+					}
+				]
+			},
+			"switches": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"switch",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "61d7838e-5a7f-432c-93af-3e610eb944a5",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
