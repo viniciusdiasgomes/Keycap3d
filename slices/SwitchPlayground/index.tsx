@@ -9,7 +9,8 @@ import clsx from "clsx";
 import { Canvas } from "@react-three/fiber";
 import { Switch } from "@/components/Switch";
 import { Stage } from "@react-three/drei";
-
+import gsap from 'gsap'
+import { LuVolume2 } from "react-icons/lu";
 export type SwitchPlaygroundProps =
   SliceComponentProps<Content.SwitchPlaygroundSlice>;
 
@@ -76,8 +77,25 @@ const SharedCanvas = ({color}: ShareCanvasProps)=>{
     black: "bg-gray-900",
   }[colorName]
 
+
+  const handleSound = ()=>{
+    const selectedSound = gsap.utils.random(SOUND_MAP[colorName])
+
+    const audio = new Audio(selectedSound);
+    audio.volume = 0.6;
+    audio.play();
+  }
+
   return (
     <div className="group relative min-h-96 overflow-hidden rounded-3xl select-none">
+
+{/* texto button */}
+<button 
+onClick={handleSound}
+className="font-bold-slanted absolute bottom-0 left-0 z-10 fflex items-center gap-3 p-6 text-4xl text-white uppercase focus:ring-2 focus:ring-white focus:outline-none">
+  {name} <LuVolume2 />
+</button>
+
 
       <Canvas camera={{position:[1.5, 2, 0], fov: 7}}>
         <Stage adjustCamera intensity={0.5} shadows={"cotact"} Environment="city">
