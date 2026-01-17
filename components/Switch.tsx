@@ -88,7 +88,7 @@ export function Switch({color, hexColor, ...restProps}: SwitchProps) {
 audio.current = gsap.utils.random(allAudio.current)
 audio.current.currentTime = 0
 audio.current.play()
-audioTimeout.current = setTimeout(()=> audio.current?.parse(), (audio.current.duration / 2) *  1000,)
+audioTimeout.current = setTimeout(()=> audio.current?.pause(), (audio.current.duration / 2) *  1000,)
 
 
 
@@ -99,7 +99,7 @@ audioTimeout.current = setTimeout(()=> audio.current?.parse(), (audio.current.du
 
 
 
-    if (!stemRef.current || switchGroupRef.current || !isPressedRef.current) return 
+    if (!stemRef.current || !switchGroupRef.current || !isPressedRef.current) return 
     isPressedRef.current = false;
 
 

@@ -70,6 +70,7 @@ type ContentRelationshipFieldWithData<
 }[Exclude<TCustomType[number], string>["id"]];
 
 type HomepaeDocumentDataSlicesSlice =
+  | MarqueSlice
   | SwitchPlaygroundSlice
   | ColorChangerSlice
   | BentoBoxSlice
@@ -387,6 +388,73 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Item in *Marque → Default → Primary → Phrases*
+ */
+export interface MarqueSliceDefaultPrimaryPhrasesItem {
+  /**
+   * Text field in *Marque → Default → Primary → Phrases*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: marque.default.primary.phrases[].text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Marque → Default → Primary*
+ */
+export interface MarqueSliceDefaultPrimary {
+  /**
+   * Direction field in *Marque → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: marque.default.primary.direction
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  direction: prismic.SelectField<"Left" | "Right">;
+
+  /**
+   * Phrases field in *Marque → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: marque.default.primary.phrases[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  phrases: prismic.GroupField<Simplify<MarqueSliceDefaultPrimaryPhrasesItem>>;
+}
+
+/**
+ * Default variation for Marque Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type MarqueSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<MarqueSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Marque*
+ */
+type MarqueSliceVariation = MarqueSliceDefault;
+
+/**
+ * Marque Shared Slice
+ *
+ * - **API ID**: `marque`
+ * - **Description**: Marque
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type MarqueSlice = prismic.SharedSlice<"marque", MarqueSliceVariation>;
+
+/**
  * Item in *SwitchPlayground → Default → Primary → Switches*
  */
 export interface SwitchPlaygroundSliceDefaultPrimarySwitchesItem {
@@ -510,6 +578,11 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      MarqueSlice,
+      MarqueSliceDefaultPrimaryPhrasesItem,
+      MarqueSliceDefaultPrimary,
+      MarqueSliceVariation,
+      MarqueSliceDefault,
       SwitchPlaygroundSlice,
       SwitchPlaygroundSliceDefaultPrimarySwitchesItem,
       SwitchPlaygroundSliceDefaultPrimary,

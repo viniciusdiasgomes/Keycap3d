@@ -30,7 +30,7 @@
 /*   Animações & Utilidades */
 /* ======================= */
 
-@keyframes marquee {
+@keyframes marque {
   0% {
     transform: translateX(0%);
   }
@@ -39,15 +39,15 @@
   }
 }
 
-.animate-marquee {
-  animation-name: marquee;
+.animate-marque {
+  animation-name: marque;
   animation-duration: 30s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-marquee {
+  .animate-marque {
     animation: none;
   }
 }
