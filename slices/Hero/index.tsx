@@ -9,8 +9,20 @@ import { Scene } from "./Scene";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
 import gsap from "gsap";
+import { useProgress } from "@react-three/drei";
 
 gsap.registerPlugin(useGSAP, SplitText)
+
+
+function LoaderWrapper(){
+  const {active} = useProgress()
+
+  return active ? <Loader/> : null;
+}
+
+
+
+
 
 
 export type HeroProps = SliceComponentProps<Content.HeroSlice>;
@@ -69,10 +81,13 @@ const Hero: FC<HeroProps> = ({ slice }) => {
       <div className="hero-scene pointer-events-none sticky top-0 h-dvh w-full">
 
         <Canvas shadows="soft">
-          <Scene/>
-        </Canvas>
+          
 
+          <Scene/>
+          
+        </Canvas>
       </div>
+<LoaderWrapper/>
 
       <div className="hero-content absolute inset-x-0 top-0 h-dvh">
         <Bounded fullWidth className="absolute top-18 inset-x-0 md:top-24 md:left-[8vw] ">

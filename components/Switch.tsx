@@ -86,9 +86,15 @@ export function Switch({color, hexColor, ...restProps}: SwitchProps) {
 
 // Audio
 audio.current = gsap.utils.random(allAudio.current)
-audio.current.currentTime = 0
-audio.current.play()
-audioTimeout.current = setTimeout(()=> audio.current?.pause(), (audio.current.duration / 2) *  1000,)
+audio.current.currentTime = 0;
+
+audio.current.onloadedmetadata = () => {
+  audio.current?.play();
+
+  audioTimeout.current = setTimeout(() => {
+    audio.current?.pause();
+  }, (audio.current!.duration / 2) * 1000);
+};
 
 
 
