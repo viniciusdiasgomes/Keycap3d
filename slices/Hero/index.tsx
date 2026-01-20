@@ -1,6 +1,6 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { Bounded } from "@/components/Bounded";
@@ -9,18 +9,40 @@ import { Scene } from "./Scene";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
 import gsap from "gsap";
-import { useProgress } from "@react-three/drei";
+import { Loader, useProgress } from "@react-three/drei";
+import clsx from "clsx";
 
 gsap.registerPlugin(useGSAP, SplitText)
+ 
 
+function LoaderWrapper() {
+  const { active } = useProgress()
+  const [visible, setVisible] = useState(true)
 
-function LoaderWrapper(){
-  const {active} = useProgress()
+  useEffect(() => {
+    if (!active) {
+      const timer = setTimeout(() => {
+        setVisible(false) 
+      }, 100)
 
-  return active ? <Loader/> : null;
+      return () => clearTimeout(timer)
+    }
+
+  }, [active])
+
+  return (
+    <div
+      className={clsx(
+        "motion-safe:transition-opacity motion-safe:duration-700",
+        active || visible
+          ? "opacity-100"
+          : "pointer-events-none opacity-0"
+      )}
+    >
+      <Loader />
+    </div>
+  )
 }
-
-
 
 
 

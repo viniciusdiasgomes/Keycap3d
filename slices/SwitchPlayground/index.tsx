@@ -27,7 +27,7 @@ const SwitchPlayground: FC<SwitchPlaygroundProps> = ({ slice }) => {
     >
 
     <FadeIn>
-      <h2 className="font-bold-slanted scroll-pt-6 text-6x1 uppercase md:text-8xl">
+      <h2 id="switch-playground" className="font-bold-slanted scroll-pt-6 text-6x1 uppercase md:text-8xl">
       <PrismicText field={slice.primary.heading} />
       </h2>
 
