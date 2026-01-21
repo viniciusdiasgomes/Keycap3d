@@ -319,7 +319,7 @@ const keycapTexture = useTexture(
   }
 );
 
-const knurlTexture = useTexture("/Knurl.jpg", (texture) => {
+const KnurlTexture = useTexture("/Knurl.jpg", (texture) => {
   texture.flipY = false;
   texture.colorSpace = THREE.SRGBColorSpace;
 
@@ -353,7 +353,7 @@ const knobMat = new THREE.MeshStandardMaterial({
    color: knobColor || "#E24818",
       roughness: 0.4,
       metalness:1,
-      bumpMap: knurlTexture,
+      bumpMap: KnurlTexture,
       bumpScale: 0.8,
     })
 
