@@ -319,7 +319,7 @@ const keycapTexture = useTexture(
   }
 );
 
-const knurlTexture = useTexture("/knurl.jpg", (texture) => {
+const knurlTexture = useTexture("/Knurl.jpg", (texture) => {
   texture.flipY = false;
   texture.colorSpace = THREE.SRGBColorSpace;
 
