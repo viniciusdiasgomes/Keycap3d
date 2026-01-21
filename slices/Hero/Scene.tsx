@@ -152,7 +152,7 @@ export function Scene(){
             const scrollTimeline = gsap.timeline({
                 
                 scrollTrigger: {
-                    markers: true,
+                    markers: false,
                     trigger:".hero",
                     start:"top top",
                     end: "bottom bottom",
